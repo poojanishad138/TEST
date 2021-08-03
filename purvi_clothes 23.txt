@@ -1,0 +1,269 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 23, 2020 at 08:46 AM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `purvi_clothes`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `A_id` varchar(255) NOT NULL,
+  `A_Pass` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`A_id`, `A_Pass`) VALUES
+('garvi', 'garvi'),
+('pooja', 'pooja');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cid` int(11) NOT NULL,
+  `uid` varchar(50) NOT NULL,
+  `pid` varchar(50) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `pri` double NOT NULL,
+  `tot` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cid`, `uid`, `pid`, `qty`, `pri`, `tot`) VALUES
+(8, 'User Exit', '1', 2, 700, 1400),
+(12, 'User Exit', '1', 2, 7000, 14000),
+(13, 'User Exit', '3', 2, 499, 998);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `catgeory`
+--
+
+CREATE TABLE `catgeory` (
+  `Category_id` int(11) NOT NULL,
+  `Category_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `catgeory`
+--
+
+INSERT INTO `catgeory` (`Category_id`, `Category_name`) VALUES
+(5, 'one_piece'),
+(6, 'jeans'),
+(7, 'tops');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `member`
+--
+
+CREATE TABLE `member` (
+  `M_id` int(11) NOT NULL,
+  `M_address` varchar(10) NOT NULL,
+  `M_pwd` varchar(30) NOT NULL,
+  `M_D.O.B` varchar(20) NOT NULL,
+  `M_contno` bigint(10) NOT NULL,
+  `M_gender` varchar(6) NOT NULL,
+  `M_email` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ordersummary`
+--
+
+CREATE TABLE `ordersummary` (
+  `Order_id` int(11) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `City` varchar(50) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `Pincode` int(6) NOT NULL,
+  `PhoneNumber` varchar(13) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Total` int(11) NOT NULL,
+  `Payment_method` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ordersummary`
+--
+
+INSERT INTO `ordersummary` (`Order_id`, `Name`, `City`, `Address`, `Pincode`, `PhoneNumber`, `Email`, `Total`, `Payment_method`) VALUES
+(55, 'nilu', 'rajkot', 'kalavad', 363241, '9725668480', 'n@gmail.com', 1400, 'Cash on Delivery');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_table`
+--
+
+CREATE TABLE `product_table` (
+  `Product_id` int(11) NOT NULL,
+  `Product_name` varchar(255) NOT NULL,
+  `Category_id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `Price` varchar(255) NOT NULL,
+  `Quantity` varchar(255) NOT NULL,
+  `Descripation` varchar(255) NOT NULL,
+  `Company_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_table`
+--
+
+INSERT INTO `product_table` (`Product_id`, `Product_name`, `Category_id`, `image`, `Price`, `Quantity`, `Descripation`, `Company_name`) VALUES
+(1, 'White One Piece', 5, '41.jpg', '7000', '100', 'white beautiful one piece with design', 'white one piece'),
+(3, 'blue jeans', 6, '23.jpg', '499', '100', 'blue staylish jeans', 'polo'),
+(4, 'Black Design Top', 7, '39.jpg', '499', '100', 'black beautifull top', 'jade blue'),
+(5, 'blue jeans', 6, '20.jpg', '499', '100', 'blue jeans', 'denim'),
+(7, 'one piece', 5, '18.jpg', '5000', '6', 'red simple piece', 'w'),
+(8, 'red one piece', 5, '14.jpg', '6000', '200', 'one piece ', 'w'),
+(9, 'Jeans', 6, '21.jpg', '1299', '100', 'comfortable', 'Denim'),
+(10, 'Top', 7, '1.jpg', '799', '100', 'formal', 'Denim'),
+(11, 'Top', 7, '4.jpg', '1599', '200', 'black top', 'Denim');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `registration`
+--
+
+CREATE TABLE `registration` (
+  `User_Id` int(11) NOT NULL,
+  `Name` varchar(20) NOT NULL,
+  `Mobile_Number` varchar(20) NOT NULL,
+  `Email_Id` varchar(30) NOT NULL,
+  `Password` varchar(20) NOT NULL,
+  `Birthdate` date NOT NULL,
+  `Address` varchar(70) NOT NULL,
+  `City` varchar(20) NOT NULL,
+  `Pincode` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`User_Id`, `Name`, `Mobile_Number`, `Email_Id`, `Password`, `Birthdate`, `Address`, `City`, `Pincode`) VALUES
+(5, 'poojanishad', '9725668880', 'poojanishad@gmail.com', 'poojanishad', '1998-08-12', 'hemighavi hall ', 'rajkot', '360005');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`A_id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cid`);
+
+--
+-- Indexes for table `catgeory`
+--
+ALTER TABLE `catgeory`
+  ADD PRIMARY KEY (`Category_id`);
+
+--
+-- Indexes for table `member`
+--
+ALTER TABLE `member`
+  ADD PRIMARY KEY (`M_id`);
+
+--
+-- Indexes for table `ordersummary`
+--
+ALTER TABLE `ordersummary`
+  ADD PRIMARY KEY (`Order_id`);
+
+--
+-- Indexes for table `product_table`
+--
+ALTER TABLE `product_table`
+  ADD PRIMARY KEY (`Product_id`);
+
+--
+-- Indexes for table `registration`
+--
+ALTER TABLE `registration`
+  ADD PRIMARY KEY (`User_Id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `catgeory`
+--
+ALTER TABLE `catgeory`
+  MODIFY `Category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `ordersummary`
+--
+ALTER TABLE `ordersummary`
+  MODIFY `Order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
+--
+-- AUTO_INCREMENT for table `product_table`
+--
+ALTER TABLE `product_table`
+  MODIFY `Product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `registration`
+--
+ALTER TABLE `registration`
+  MODIFY `User_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
